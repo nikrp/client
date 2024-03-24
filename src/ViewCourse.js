@@ -8,6 +8,7 @@ export default function ViewCourse() {
     const [questionTwoChoice, setQuestionTwoChoice] = useState(0);
     const [questionThreeChoice, setQuestionThreeChoice] = useState(0);
     const [questionFourChoice, setQuestionFourChoice] = useState(0);
+    console.log(params.questions);
 
     function checkAnswers() {
         let data = {};
@@ -42,68 +43,54 @@ export default function ViewCourse() {
         <div>
             <div className="container">
                 <div className="row" style={{ marginTop: '50px' }}>
+                    <div className="fluid">
+                        <h1 style={{ fontWeight: '500', fontSize: '24px', color: 'black' }}>Course View</h1>
+                    </div>
+                </div>
+                <div className="row" style={{ marginTop: '50px' }}>
                     <div className="col-sm">
-                        <iframe src={`https://youtube.com/embed/${params.urls[currentVideoIndex].split('v=')[1]}`} title={params.urls[currentVideoIndex]} width={700} height={400} />
+                        <div style={{ position: "fixed", top: '140px', left: '90px', width: '600px' }}>
+                            <iframe src={`https://youtube.com/embed/${params.urls[currentVideoIndex].split('v=')[1]}`} title={params.urls[currentVideoIndex]} width={600} height={300} style={{ borderRadius: '10px' }} />
+                            <button className="btn btn-dark" style={{ marginTop: '40px', width: '100%' }} onClick={() => setCurrentVideoIndex((prevIndex) => prevIndex + 1)}>Next Video</button>
                         </div>
+                    </div>
                     <div className="col-sm" style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column' }}>
                     <div key={0} style={{ borderRadius: '10px', boxShadow: '1px 3px 10px gray', marginBottom: '20px', 'padding': '15px 15px' }}>
                                     <p style={{ fontSize: '20px', fontWeight: '500' }}>{Object.keys(params.questions[0])[0]}</p>
                                     <hr/>
-                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 0 ? 'black' : 'white', color: questionOneChoice === 0 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[0]][0]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 1 ? 'black' : 'white', color: questionOneChoice === 1 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[0]][1]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 2 ? 'black' : 'white', color: questionOneChoice === 2 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[0]][2]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 3 ? 'black' : 'white', color: questionOneChoice === 3 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[0]][3]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 0 ? 'black' : 'white', color: questionOneChoice === 0 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[currentVideoIndex]][0]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 1 ? 'black' : 'white', color: questionOneChoice === 1 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[currentVideoIndex]][1]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 2 ? 'black' : 'white', color: questionOneChoice === 2 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[currentVideoIndex]][2]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionOneChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionOneChoice === 3 ? 'black' : 'white', color: questionOneChoice === 3 ? 'white' : 'black' }}>{params.questions[0][Object.keys(params.questions[0])[currentVideoIndex]][3]}</p>
                                 </div>
                                 <div key={1} style={{ borderRadius: '10px', boxShadow: '1px 3px 10px gray', marginBottom: '20px', 'padding': '15px 15px' }}>
                                     <p style={{ fontSize: '20px', fontWeight: '500' }}>{Object.keys(params.questions[1])[0]}</p>
                                     <hr/>
-                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 0 ? 'black' : 'white', color: questionTwoChoice === 0 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[0]][0]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 1 ? 'black' : 'white', color: questionTwoChoice === 1 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[0]][1]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 2 ? 'black' : 'white', color: questionTwoChoice === 2 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[0]][2]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 3 ? 'black' : 'white', color: questionTwoChoice === 3 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[0]][3]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 0 ? 'black' : 'white', color: questionTwoChoice === 0 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[currentVideoIndex]][0]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 1 ? 'black' : 'white', color: questionTwoChoice === 1 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[currentVideoIndex]][1]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 2 ? 'black' : 'white', color: questionTwoChoice === 2 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[currentVideoIndex]][2]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionTwoChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionTwoChoice === 3 ? 'black' : 'white', color: questionTwoChoice === 3 ? 'white' : 'black' }}>{params.questions[1][Object.keys(params.questions[1])[currentVideoIndex]][3]}</p>
                                 </div>
                                 <div key={2} style={{ borderRadius: '10px', boxShadow: '1px 3px 10px gray', marginBottom: '20px', 'padding': '15px 15px' }}>
                                     <p style={{ fontSize: '20px', fontWeight: '500' }}>{Object.keys(params.questions[2])[0]}</p>
                                     <hr/>
-                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 0 ? 'black' : 'white', color: questionThreeChoice === 0 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[0]][0]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 1 ? 'black' : 'white', color: questionThreeChoice === 1 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[0]][1]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 2 ? 'black' : 'white', color: questionThreeChoice === 2 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[0]][2]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 3 ? 'black' : 'white', color: questionThreeChoice === 3 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[0]][3]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 0 ? 'black' : 'white', color: questionThreeChoice === 0 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[currentVideoIndex]][0]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 1 ? 'black' : 'white', color: questionThreeChoice === 1 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[currentVideoIndex]][1]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 2 ? 'black' : 'white', color: questionThreeChoice === 2 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[currentVideoIndex]][2]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionThreeChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionThreeChoice === 3 ? 'black' : 'white', color: questionThreeChoice === 3 ? 'white' : 'black' }}>{params.questions[2][Object.keys(params.questions[2])[currentVideoIndex]][3]}</p>
                                 </div>
                                 <div key={3} style={{ borderRadius: '10px', boxShadow: '1px 3px 10px gray', marginBottom: '20px', 'padding': '15px 15px' }}>
                                     <p style={{ fontSize: '20px', fontWeight: '500' }}>{Object.keys(params.questions[3])[0]}</p>
                                     <hr/>
-                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 0 ? 'black' : 'white', color: questionFourChoice === 0 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[0]][0]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 1 ? 'black' : 'white', color: questionFourChoice === 1 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[0]][1]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 2 ? 'black' : 'white', color: questionFourChoice === 2 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[0]][2]}</p>
-                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 3 ? 'black' : 'white', color: questionFourChoice === 3 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[0]][3]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(0)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 0 ? 'black' : 'white', color: questionFourChoice === 0 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[currentVideoIndex]][0]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(1)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 1 ? 'black' : 'white', color: questionFourChoice === 1 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[currentVideoIndex]][1]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(2)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 2 ? 'black' : 'white', color: questionFourChoice === 2 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[currentVideoIndex]][2]}</p>
+                                    <p className="answer-choice" onClick={() => setQuestionFourChoice(3)} style={{ padding: '7px 7px', border: '1px solid black', borderRadius: '5px', background: questionFourChoice === 3 ? 'black' : 'white', color: questionFourChoice === 3 ? 'white' : 'black' }}>{params.questions[3][Object.keys(params.questions[3])[currentVideoIndex]][3]}</p>
                                 </div>
 
                                 <button onClick={checkAnswers} className="btn btn-primary">Check</button>
                     </div>
                 </div>
-            </div>
-            <div className="container w-100">
-                <h2>Make a Choice (Only One)</h2>
-                <form >
-                    <div className="form-check">
-                        <input className="form-check-input" type="radio" value="choice1" id="choice1" name="choice" />
-                            <label className="form-check-label" for="choice1">Choice 1</label>
-                    </div>
-                    <div class="form-check">
-                    <input className="form-check-input" type="radio" value="choice2" id="choice2" name="choice" />
-                        <label className="form-check-label" for="choice2">Choice 2</label>
-                    </div>
-                    <div className="form-check">
-                        <input className="form-check-input" type="radio" value="choice3" id="choice3" name="choice" />
-                            <label className="form-check-label" for="choice3">Choice 3</label>
-                    </div>
-                    <div className="form-check">
-                        <input className="form-check-input" type="radio" value="choice4" id="choice4" name="choice" />
-                            <label className="form-check-label" for="choice4">Choice 4</label>
-                    </div>
-                    <button type="submit" className="btn btn-primary btn-lg mt-3">Check</button>
-                </form>
             </div>
         </div>
     )
